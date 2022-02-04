@@ -28,8 +28,8 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
 
         public double GetPrice()
         {
-            // TODO: return price
-            return 0;
+            // TODO: return price      
+            return movieScreening.GetPricePerSeat();
         }
 
         public override string ToString()

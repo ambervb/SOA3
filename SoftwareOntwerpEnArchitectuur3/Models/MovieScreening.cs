@@ -21,6 +21,7 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
 
         public double GetPricePerSeat()
         {
+          
             return pricePerSeat;
         }
 
