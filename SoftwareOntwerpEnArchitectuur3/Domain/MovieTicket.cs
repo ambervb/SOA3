@@ -28,7 +28,6 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
 
         public double GetPrice()
         {
-            // TODO: return price      
             return movieScreening.GetPricePerSeat();
         }
 

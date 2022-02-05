@@ -19,6 +19,7 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
         {
             this.orderNr = orderNr;
             this.isStudentOrder = isStudentOrder;
+            this.movieTickets = new List<MovieTicket>();
         }
 
         public int GetOrderNr()
@@ -37,13 +38,14 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
             double discount = 0.0;
             int ticketCount = movieTickets.Count;
             DayOfWeek dayOfScreening = DateTime.Today.DayOfWeek;
-         
-            for(int i = 0; i < ticketCount; i++){
+
+            for (int i = 0; i < ticketCount; i++)
+            {
                 MovieTicket ticket = movieTickets[i];
                 double ticketPrice = ticket.GetPrice();
                 if (isStudentOrder || (dayOfScreening >= DayOfWeek.Monday && dayOfScreening <= DayOfWeek.Thursday))
                 {
-                    if (i+1 % 2 == 0)
+                    if (i + 1 % 2 == 0)
                     {
                         ticketPrice = 0;
                         totalOrder += ticketPrice;
@@ -81,8 +83,6 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
             }
 
             File.WriteAllText(path, orderText);
-
         }
-        
     }
 }
