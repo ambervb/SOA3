@@ -1,5 +1,4 @@
-﻿using SoftwareOntwerpEnArchitectuur3.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,9 +6,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SoftwareOntwerpEnArchitectuur3.Models
+namespace Domain
 {
-    internal class Order
+    public class Order
     {
         private int orderNr;
         private bool isStudentOrder;
@@ -37,19 +36,20 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
             double totalOrder = 0;
             double discount = 0.0;
             int ticketCount = movieTickets.Count;
-            DayOfWeek dayOfScreening = DateTime.Today.DayOfWeek;
 
             for (int i = 0; i < ticketCount; i++)
             {
                 MovieTicket ticket = movieTickets[i];
                 double ticketPrice = ticket.GetPrice();
+                // TODO: Dit hoort niet public te zijn
+                DayOfWeek dayOfScreening = ticket.movieScreening.dateAndTime.DayOfWeek;
                 if (isStudentOrder || (dayOfScreening >= DayOfWeek.Monday && dayOfScreening <= DayOfWeek.Thursday))
                 {
-                    if (i + 1 % 2 == 0)
+                    if ((i + 1) % 2 == 0)
                     {
                         ticketPrice = 0;
                         totalOrder += ticketPrice;
-                        break;
+                        continue;
                     }
                 }
                 if (ticket.IsPremium())
@@ -73,11 +73,11 @@ namespace SoftwareOntwerpEnArchitectuur3.Models
             return totalOrder - totalOrder * discount;
         }
 
-        public void Export(TicketExportFormat ticketExportFormat)
+        public void Export(EnumTicketExportFormat ticketExportFormat)
         {
             String path = "";
             String orderText = "test";
-            if (ticketExportFormat == TicketExportFormat.JSON)
+            if (ticketExportFormat == EnumTicketExportFormat.JSON)
             {
                 orderText = JsonSerializer.Serialize(orderText);
             }

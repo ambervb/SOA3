@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoftwareOntwerpEnArchitectuur3.Models
+namespace Domain
 {
-    internal class MovieTicket
+    public class MovieTicket
     {
         private int rowNr;
         private int seatNr;
         private bool isPremium;
-        private MovieScreening movieScreening;
+        public MovieScreening movieScreening;
 
         public MovieTicket(MovieScreening movieScreening, bool isPremiumReservation, int seatRow, int seatNr)
         {

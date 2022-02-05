@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoftwareOntwerpEnArchitectuur3.Models
+namespace Domain
 {
-    internal class Movie
+    public class Movie
     {
         private string title;
         private List<MovieScreening> movieScreenings;

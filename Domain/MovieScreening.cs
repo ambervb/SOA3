@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoftwareOntwerpEnArchitectuur3.Models
+namespace Domain
 {
-    internal class MovieScreening
+    public class MovieScreening
     {
-        private DateTime dateAndTime;
+        public DateTime dateAndTime;
         private double pricePerSeat;
         private Movie movie;
 
